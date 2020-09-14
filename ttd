@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+import click
+
+@click.group()
+def ttd():
+    """A command line interface for you to stay organized in your terminal."""
+
+@ttd.command()
+def new():
+    """Create a new to-do"""
+
+@ttd.command()
+def finish():
+    """Finish a to-do"""
+
+@ttd.command()
+def finishall():
+    """Finish all to-dos"""
+
+if __name__ == '__main__':
+    ttd(prog_name='ttd')
+
