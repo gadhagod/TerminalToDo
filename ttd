@@ -61,7 +61,7 @@ def cls():
 def view():
     """View your to-dos"""
     t('cat ~/TerminalToDo/list.txt')
-    click.echo('')
+#    click.echo('')
 
 if __name__ == '__main__':
     ttd(prog_name='ttd')
