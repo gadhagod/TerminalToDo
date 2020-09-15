@@ -2,7 +2,6 @@
 import click
 from os import environ
 from os import system as t
-from datetime import datetime as d
 
 def path():
     home = environ.get("HOME")
