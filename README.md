@@ -40,5 +40,5 @@ Commands:
 <code>ttd cls</code> completes all to-dos.<br>
 <code>ttd view</code> displays all your to-dos.
 <br><br><p align="center">
-  <a href="http://gadhagod.repl.co/"><img src="Logos/logo.png" legnth=40% width=40%></a>
+  <a href="http://gadhagod.repl.co/"><img src="images/logo.png" legnth=40% width=40%></a>
 </p>
