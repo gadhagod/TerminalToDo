@@ -1,5 +1,6 @@
 <h1 align="center">TerminalToDo</h1>
 <p align="center"><b>Stay organized in your command line!</b></p>
+<h3><a href="https://terminaltodo.gadhagod.repl.co/quickstart.html">Docs</a>
 
 <h3>Requirements</h3>
 <ul>
