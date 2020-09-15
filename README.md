@@ -35,9 +35,9 @@ Commands:
   view  View your to-dos
 ```
 <h3>Commands</h3>
-<code>ttd add</code> creates a to-do with one parameter. The argument passed will be the name of your to-do.
-<code>ttd rm</code> completes a to-do with one parameter. The argument passed is the to-do to be removed.
-<code>ttd cls</code> completes all to-dos.
+<code>ttd add</code> creates a to-do with one parameter. The argument passed will be the name of your to-do.<br>
+<code>ttd rm</code> completes a to-do with one parameter. The argument passed is the to-do to be removed.<br>
+<code>ttd cls</code> completes all to-dos.<br>
 <code>ttd view</code> displays all your to-dos.
 <br><br><p align="center">
   <a href="http://gadhagod.repl.co/"><img src="Logos/logo.png" legnth=40% width=40%></a>
