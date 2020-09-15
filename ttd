@@ -1,26 +1,38 @@
 #!/usr/bin/python3
 import click
+from os import environ
 from os import system as t
+from datetime import datetime as d
+
+def path():
+    home = environ.get("HOME")
+    dir = home + '/' + 'TerminalToDo'
+    return dir
+
 def additem(todo):
-    list = open("~/TerminalToDo/list.txt", "r")
+    list = open(path() + "/list.txt", "r")
     strlist = list.read()
     list.close()
-    strlist = strlist +  "\n" + todo
+    full = strlist +  todo + '\n'
     t('python3 ~/TerminalToDo/createlist.py')
-    list = open('~/TerminalToDo/list.txt', 'w')
-    list.write(strlist)
+    list = open(path() + '/list.txt', 'w')
+    list.write(full)
     list.close()
 
 def rmitem(todo):
-    list = open("~/TerminalToDo/list.txt", "r")
+    list = open(path() + "/list.txt", "r")
     strlist = list.read()
     list.close()
-    strlist = strlist.replace( "\n" + todo, '')
-    t('rm ~/TerminalToDolist.txt')
-    t('python3 ~/TerminalToDo/createlist.py')
-    list = open("~/TerminalToDo/list.txt", "w")
-    list.write(strlist)
-    list.close()
+    if todo in strlist:
+        strlist = strlist.replace(todo + '\n', '')
+        t('rm ~/TerminalToDo/list.txt')
+        t('python3 ~/TerminalToDo/createlist.py')
+        list = open(path() + "/list.txt", "w")
+        list.write(strlist)
+        list.close()
+        return (todo + ' removed from your to-dos')
+    else:
+        return 'Item not in your to-dos'
 
 @click.group()
 def ttd():
@@ -28,25 +40,29 @@ def ttd():
 
 @ttd.command()
 @click.argument('todo')
-def new(todo):
+def add(todo):
     """Create a to-do"""
     additem(todo)
-    click.echo(todo + 'added to your to-dos.')
+    click.echo(todo + ' added to your to-dos.')
     
 @ttd.command()
 @click.argument('todo')
-def finish(todo):
+def rm(todo):
     """Finish a to-do"""
-    rmitem(todo)
-    click.echo(todo + 'removed from your to-dos.')
+    click.echo(rmitem(todo))
 
 @ttd.command()
-def finishall():
-    t('rm list.txt')
-    t('python3 createlist.py')
+def cls():
+    """Finish all to-dos"""
+    t('rm ~/TerminalToDo/list.txt')
+    t('python3 ~/TerminalToDo/createlist.py')
     click.echo('To-do list cleared')
+
+@ttd.command()
+def view():
+    """View your to-dos"""
+    t('cat ~/TerminalToDo/list.txt')
+    click.echo('')
 
 if __name__ == '__main__':
     ttd(prog_name='ttd')
-
-
