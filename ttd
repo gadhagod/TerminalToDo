@@ -1,22 +1,52 @@
 #!/usr/bin/python3
 import click
+from os import system as t
+def additem(todo):
+    list = open("~/TerminalToDo/list.txt", "r")
+    strlist = list.read()
+    list.close()
+    strlist = strlist +  "\n" + todo
+    t('python3 ~/TerminalToDo/createlist.py')
+    list = open('~/TerminalToDo/list.txt', 'w')
+    list.write(strlist)
+    list.close()
+
+def rmitem(todo):
+    list = open("~/TerminalToDo/list.txt", "r")
+    strlist = list.read()
+    list.close()
+    strlist = strlist.replace( "\n" + todo, '')
+    t('rm ~/TerminalToDolist.txt')
+    t('python3 ~/TerminalToDo/createlist.py')
+    list = open("~/TerminalToDo/list.txt", "w")
+    list.write(strlist)
+    list.close()
 
 @click.group()
 def ttd():
     """A command line interface for you to stay organized in your terminal."""
 
 @ttd.command()
-def new():
-    """Create a new to-do"""
-
+@click.argument('todo')
+def new(todo):
+    """Create a to-do"""
+    additem(todo)
+    click.echo(todo + 'added to your to-dos.')
+    
 @ttd.command()
-def finish():
+@click.argument('todo')
+def finish(todo):
     """Finish a to-do"""
+    rmitem(todo)
+    click.echo(todo + 'removed from your to-dos.')
 
 @ttd.command()
 def finishall():
-    """Finish all to-dos"""
+    t('rm list.txt')
+    t('python3 createlist.py')
+    click.echo('To-do list cleared')
 
 if __name__ == '__main__':
     ttd(prog_name='ttd')
+
 
